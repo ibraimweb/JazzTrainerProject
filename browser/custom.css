@@ -1,0 +1,16 @@
+body {
+    background-color: #FFCC00;
+    padding: 2%;
+    height: 100vh;
+  }
+
+#custom-container {
+    height: 100%;
+    border-radius: 10px;
+    border: 2px solid #cc6600;
+}
+
+#KeySymbol {
+    font-size: 5em;
+    font-style: bold;
+}
