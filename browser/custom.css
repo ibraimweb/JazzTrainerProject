@@ -10,6 +10,17 @@ body {
     border: 2px solid #cc6600;
 }
 
+.row {
+    height: 33.33333333%;
+}
+
+.custom-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 #KeySymbol {
     font-size: 5em;
     font-style: bold;
