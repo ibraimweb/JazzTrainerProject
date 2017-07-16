@@ -5,22 +5,23 @@ var temp;
 var i = 0;
 
 function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length,
+        temporaryValue, randomIndex;
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
 
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
 
-  return array;
+    return array;
 }
 
 // var bar = new ProgressBar.Circle(container, {
@@ -40,49 +41,49 @@ function shuffle(array) {
 var set;
 var isPlaying = false;
 
-function play(keysArr){
-    if(isPlaying) return;
+function play(keysArr) {
+    if (isPlaying) return;
     isPlaying = true;
+
     temp = $('#temp').val() * 1000;
-    set = setInterval(function(){
+    set = setInterval(function() {
+        $('#container').toggleClass('circleBlink');
         // bar.animate(1.0, {
         //     duration: temp
         // });
         key.text(keysArr[i]);
         i++;
-        if(i === keysArr.length){
+        if (i === keysArr.length) {
             i = 0;
         }
     }, temp);
 }
 
-function stop(){
+function stop() {
     key.text(keys[0]);
     isPlaying = false;
     clearInterval(set);
     i = 0;
 }
 
-function pause(){
+function pause() {
     isPlaying = false;
     clearInterval(set);
 }
 
-$('#start').on('click', function(){
+$('#start').on('click', function() {
     play(keys || customKeys);
 });
 
-$('#reset').on('click', function(){
+$('#reset').on('click', function() {
     stop();
 });
 
-$('#pause').on('click', function(){
+$('#pause').on('click', function() {
     pause();
 });
 
-$('#shuffle').on('click', function(){
+$('#shuffle').on('click', function() {
     shuffle(keys);
     console.log(keys)
 });
-
-

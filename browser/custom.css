@@ -2,7 +2,7 @@ body {
     background-color: #ffcc00;
     padding: 5% 15%;
     height: 100vh;
-  }
+}
 
 #custom-container {
     height: 100%;
@@ -33,10 +33,25 @@ h1 {
 }
 
 #keySymbol {
-    font-size: 6.9vw;
+    font-size: 12vh;
     font-style: bold;
+    position: absolute;
+    top: 10%;
+    left: 16%;
 }
 
-#temp{
+#temp {
     width: 40%;
+}
+
+.circle {
+    height: 25vh;
+    width: 25vh;
+    border: 5px solid red;
+    border-radius: 50%;
+    position: relative;
+}
+
+.circleBlink {
+    box-shadow: rgb(154, 67, 67) 1px 1px 100px;
 }
