@@ -32,26 +32,19 @@ h1 {
     text-shadow: grey 2px 2px 10px;
 }
 
-#keySymbol {
+div#container {
+    width: 25vh;
+}
+
+.progressbar-text {
     font-size: 12vh;
     font-style: bold;
     position: absolute;
     top: 10%;
     left: 16%;
+    color: black;
 }
 
 #temp {
     width: 40%;
-}
-
-.circle {
-    height: 25vh;
-    width: 25vh;
-    border: 5px solid red;
-    border-radius: 50%;
-    position: relative;
-}
-
-.circleBlink {
-    box-shadow: rgb(154, 67, 67) 1px 1px 100px;
 }

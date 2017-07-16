@@ -1,7 +1,5 @@
 var keys = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
 var customKeys;
-var key = $('#keySymbol');
-var animatedFrame = $('#container');
 var temp;
 var i = 0;
 
@@ -25,19 +23,18 @@ function shuffle(array) {
     return array;
 }
 
-// var bar = new ProgressBar.Circle(container, {
-//   color: '#FFEA82',
-//   trailColor: '#eee',
-//   trailWidth: 1,
-//   easing: 'bounce',
-//   strokeWidth: 2,
-//   from: {color: '#FFEA82', a:0},
-//   to: {color: '#ED6A5A', a:1},
-//   // Set default step function for all animate calls
-//   step: function(state, circle) {
-//     circle.path.setAttribute('stroke', state.color);
-//   }
-// });
+var bar = new ProgressBar.Circle("#container", {
+  strokeWidth: 3,
+  text: {
+    value: keys[0]
+  },
+  from: {color: '#ffffff', a:0},
+  to: {color: '#CC6600', a:1},
+  // Set default step function for all animate calls
+  step: function(state, circle) {
+    circle.path.setAttribute('stroke', state.color);
+  }
+});
 
 var set;
 var isPlaying = false;
@@ -47,13 +44,13 @@ function play(keysArr) {
     isPlaying = true;
     temp = $('#temp').val() * 1000;
     set = setInterval(function() {
-        animatedFrame.animate({height: '30vh', width: '30vh'}, temp, 'linear', function(){
-            animatedFrame.css({height: '25vh', width: '25vh'});
+        bar.set(0);
+        bar.setText(keysArr[i]);
+        bar.animate(1.0, {
+            duration: temp
+        }, function(){
+            
         });
-        // bar.animate(1.0, {
-        //     duration: temp
-        // });
-        key.text(keysArr[i]);
         i++;
         if (i === keysArr.length) {
             i = 0;
@@ -62,7 +59,7 @@ function play(keysArr) {
 }
 
 function stop() {
-    key.text(keys[0]);
+    bar.setText(keys[0]);
     isPlaying = false;
     clearInterval(set);
     i = 0;
