@@ -34,7 +34,11 @@ h1 {
     text-shadow: grey 2px 2px 10px;
 }
 
-#KeySymbol {
+#keySymbol {
     font-size: 6.9vw;
     font-style: bold;
+}
+
+#temp{
+    width: 40%;
 }
