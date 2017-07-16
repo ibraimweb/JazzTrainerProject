@@ -1,6 +1,7 @@
 var keys = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
 var customKeys;
 var key = $('#keySymbol');
+var animatedFrame = $('#container');
 var temp;
 var i = 0;
 
@@ -44,10 +45,11 @@ var isPlaying = false;
 function play(keysArr) {
     if (isPlaying) return;
     isPlaying = true;
-
     temp = $('#temp').val() * 1000;
     set = setInterval(function() {
-        $('#container').toggleClass('circleBlink');
+        animatedFrame.animate({height: '30vh', width: '30vh'}, temp, 'linear', function(){
+            animatedFrame.css({height: '25vh', width: '25vh'});
+        });
         // bar.animate(1.0, {
         //     duration: temp
         // });

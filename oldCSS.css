@@ -1,0 +1,281 @@
+body {
+  background-color: #FFCC00
+  }
+  
+div.screen {
+  height: 400px;
+  width: 100%;
+}
+  
+  div.frame {
+    height: 80%; 
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+    border: 3px solid #cc6600;}
+
+div.LeftFrame {
+  float:left;
+  //border: 1px solid red;
+  height: 100%;
+  width: 33%;
+}
+      div.LeftFrameTop {
+        height: 33%;
+        
+      }
+      div.LeftFrameMiddle {
+        border: 1px solid green;
+        height: 33%;
+        font-family: arial;
+        font-size: 0.8em;
+        text-align: center;
+        font-color: #cc6600;
+      }
+      div.LeftFrameBottom {
+        //border: 1px solid green;
+        height: 33%;
+      }
+                  div.CheckBoxes {
+                  font-family: arial;
+                  font-size: 0.7em;  
+                  //border: 1px; solid red; 
+                  margin-left: 40%;
+                  margin-top: 3%;
+                  }
+
+div.MidFrame {
+  float:left;
+  //border: 1px solid red;
+  height:100%;
+  width:33%;
+}
+
+      div.MidFrameTop {
+        height: 20%;
+        //border: 1px solid green;
+      }
+      
+              div.pageTitle {
+                font-family: "Aharoni", "Segoe Script", "Snell Roundhand" ; 
+                color: black;
+                margin-top: 25%; 
+                text-align: center; 
+                font-style: italic; 
+                font-size: 1.5em; //border: 1px solid black;
+                }
+
+      div.MidFrameMiddle {
+        //border: 1px solid green;
+        height: 33%;
+      }
+      
+     div.circle {
+              height: 5em;
+              width: 6em;
+              padding-top: 10%;
+              margin: auto;
+              
+              color: #cc6600;
+              border: 3px solid #cc6600;
+              border-radius:50%;
+              }
+              
+           div.keySymbol {
+             
+              font-family: arial;
+              text-align: center;
+              color: #cc6600;
+              font-size: 300%;
+             
+             }
+             
+             div.quality {
+              font-family: arial;
+              text-align: center;
+              color: #cc6600;
+              font-size: 100%;
+              //border: 1px solid green;
+             }
+                 
+      div.MidFrameBottom {
+        //border: 1px solid green;
+        height: 33%;
+      }
+      
+            div.Buttons {
+
+              height: 20%;
+              width: 60%; 
+              margin: auto;
+              margin-top: 12%;
+              font-family: arial;
+              font-weight:bold;
+              color: brown;
+              border-radius: 5px;
+              border: 3px solid #cc6600;
+              }
+    
+             ul.ControlButtons {
+              font-family: Arial;
+              font-weight: bold;
+              margin:0; 
+              padding:0; 
+              list-style:none; 
+              //position:relative; 
+              //float:left;
+              }
+    
+              .play {
+                font-size: 1.8em;
+                float:left;
+                margin-left: 10%;
+                margin-top: -3%;
+
+              }
+              .pause {
+                font-size: 0.9em;
+                float:left;
+                margin-left: 20%;
+                margin-top: 4%;
+              }
+    
+              .reset {
+                font-size: 1.5em;
+                float:left;
+                margin-left: 50%;
+                margin-top: -21%;
+              }
+        .shufflebutton {
+                font-size: 1.5em;
+                float:left;
+                margin-left: 50%;
+                margin-top: -21%;
+              }
+    
+
+div.RightFrame {
+  float:left;
+  //border: 1px solid red;
+  height: 100%;
+  width: 33%;
+}
+
+      div.RightFrameTop {
+        height: 20%;
+        //border: 1px solid green;
+      }
+      div.RightFrameMiddle {
+        //border: 1px solid green;
+        height: 53%;
+      }
+      
+              div.CSSKeyboard {
+                height:10em;
+                width: 10em;
+                float:right;
+                //margin:auto;
+                margin-top: 30%;
+                margin-right: 10%;
+                //border: 1px solid red;
+                }
+                li {
+                  margin:0; 
+                  padding:0; 
+                  list-style:none; 
+                  position:relative; 
+                  float:left;
+                  }
+    
+                ul .white {
+                  height: 3em; width:0.9em; z-index:1;
+                  border: 1px solid #cc6600;
+                  border-radius: 0 0 2px 2px;
+                }
+
+                ul .white:hover {
+                  height: 3em; width:0.9em; z-index:1;
+                  border: 1px solid black;
+                  border-radius: 0 0 2px 2px;
+                  background:white;
+                }
+
+                ul .white:active {
+                  height: 3em; width:0.9em; z-index:1;
+                  border: 1px solid yellow;
+                  border-radius: 0 0 2px 2px;
+                  background:red;
+                }
+
+
+  
+                  .Db, .Eb{
+                  height:2em; width: 0.5em; margin:0 0 0 -0.4em; z-index:2;
+                  border:1px solid #cc6600;
+                  border-radius:0 0 2px 2px;
+                  background:#cc6600;
+                }
+
+                  .Gb, .Ab, .Bb {
+                  height:2em; width: 0.5em; margin:0 0 0 -0.3em; z-index:2;
+                  border:1px solid #cc6600;
+                  border-radius:0 0 2px 2px;
+                  background:#cc6600;
+                }
+
+                .Db:hover, .Eb:hover{
+                  height:2em; width: 0.5em; margin:0 `0 0 -0.4em; z-index:3;
+                  border:1px solid black;
+                  border-radius:0 0 2px 2px;
+                  background:black;
+                }
+
+                .Gb:hover, .Ab:hover, .Bb:hover {
+                  height:2em; width: 0.5em; margin:0 0 0 -0.3em; z-index:3;
+                  border:1px solid black;
+                  border-radius:0 0 2px 2px;
+                  background: black;
+                  }
+  
+                 .Db:active, .Eb:active{
+                  height:2em; width: 0.5em; margin:0 `0 0 -0.4em; z-index:3;
+                  border:1px solid yellow;
+                  border-radius:0 0 2px 2px;
+                  background:red;
+                }
+
+                .Gb:active, .Ab:active, .Bb:active {
+                  height:2em; width: 0.5em; margin:0 0 0 -0.3em; z-index:3;
+                  border:1px solid yellow;
+                  border-radius:0 0 2px 2px;
+                  background:red;
+                }
+                .C,.D,.E { margin: 0 0 0 -0.3em }
+                .G,.A,.B {margin: 0 0 0 -0.3em }
+  
+      div.RightFrameBottom {
+        //border: 1px solid green;
+        height: 33%;
+      }
+      
+             div.InputTimeInterval {
+               height: 50%;
+               width: 70%;
+               font-family: arial;
+               font-size: 0.8em;
+               //display:none;
+                //border: 1px solid red;
+                }
+                
+                .InputBox {
+                  background-color:#cc6600;
+                  width: 40%;
+                  float: left;
+                  }               
+  
+                 div.RadioButtons {
+                   float: left;
+                  }
+
+
+
