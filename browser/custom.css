@@ -12,6 +12,14 @@ body {
     background: #FFCC00;
 }
 
+#noteStaff {
+    width: 100%;
+}
+
+#noteStaff > svg {
+    width: 100%;
+}
+
 h1 {
     font-size: 4.1vw;
 }
