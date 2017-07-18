@@ -86,6 +86,7 @@ function pause() {
 
 $('#start').on('click', function() {
     console.log('play');
+    pause();
     play(keys || customKeys);
 });
 
