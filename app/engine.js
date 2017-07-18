@@ -64,6 +64,7 @@ var sound = new Howl({
 });
 
 function metronomePlay(timeSign, bpm) {
+    if (isPlaying) return;
     metronome = setInterval(() => {
         sound.play();
     }, bpm);
@@ -100,7 +101,3 @@ $('#shuffle').on('click', function() {
     shuffle(keys);
     console.log(keys)
 });
-
-console.log(sound)
-
-// sound.play();
