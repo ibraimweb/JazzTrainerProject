@@ -58,20 +58,34 @@ function play(keysArr) {
     }, temp);
 }
 
+var metronome;
+var sound = new Howl({
+    src: ['./MetroBar1.wav']
+});
+
+function metronomePlay(timeSign, bpm) {
+    metronome = setInterval(() => {
+        sound.play();
+    }, bpm);
+}
+
 function stop() {
     bar.setText(keys[0]);
     isPlaying = false;
     clearInterval(set);
+    clearInterval(metronome);
     i = 0;
 }
 
 function pause() {
     isPlaying = false;
     clearInterval(set);
+    clearInterval(metronome);
 }
 
 $('#start').on('click', function() {
     play(keys || customKeys);
+    metronomePlay(0, temp);
 });
 
 $('#reset').on('click', function() {
@@ -85,10 +99,6 @@ $('#pause').on('click', function() {
 $('#shuffle').on('click', function() {
     shuffle(keys);
     console.log(keys)
-});
-
-var sound = new Howl({
-    src: ['./MetroBar1.wav', './MetroBeat1.wav']
 });
 
 console.log(sound)
