@@ -43,6 +43,7 @@ function play(keysArr) {
     if (isPlaying) return;
     isPlaying = true;
     temp = $('#temp').val() * 1000;
+    metronomePlay(0, temp);
     set = setInterval(function() {
         bar.set(0);
         bar.setText(keysArr[i]);
@@ -64,7 +65,6 @@ var sound = new Howl({
 });
 
 function metronomePlay(timeSign, bpm) {
-    if (isPlaying) return;
     metronome = setInterval(() => {
         sound.play();
     }, bpm);
@@ -86,7 +86,6 @@ function pause() {
 
 $('#start').on('click', function() {
     play(keys || customKeys);
-    metronomePlay(0, temp);
 });
 
 $('#reset').on('click', function() {
