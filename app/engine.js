@@ -85,14 +85,17 @@ function pause() {
 }
 
 $('#start').on('click', function() {
+    console.log('play');
     play(keys || customKeys);
 });
 
 $('#reset').on('click', function() {
+    console.log('stop');
     stop();
 });
 
 $('#pause').on('click', function() {
+    console.log('pause');
     pause();
 });
 
