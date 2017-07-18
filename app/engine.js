@@ -24,16 +24,16 @@ function shuffle(array) {
 }
 
 var bar = new ProgressBar.Circle("#container", {
-  strokeWidth: 3,
-  text: {
-    value: keys[0]
-  },
-  from: {color: '#ffffff', a:0},
-  to: {color: '#CC6600', a:1},
-  // Set default step function for all animate calls
-  step: function(state, circle) {
-    circle.path.setAttribute('stroke', state.color);
-  }
+    strokeWidth: 3,
+    text: {
+        value: keys[0]
+    },
+    from: { color: '#ffffff', a: 0 },
+    to: { color: '#CC6600', a: 1 },
+    // Set default step function for all animate calls
+    step: function(state, circle) {
+        circle.path.setAttribute('stroke', state.color);
+    }
 });
 
 var set;
@@ -48,8 +48,8 @@ function play(keysArr) {
         bar.setText(keysArr[i]);
         bar.animate(1.0, {
             duration: temp
-        }, function(){
-            
+        }, function() {
+
         });
         i++;
         if (i === keysArr.length) {
@@ -86,3 +86,11 @@ $('#shuffle').on('click', function() {
     shuffle(keys);
     console.log(keys)
 });
+
+var sound = new Howl({
+    src: ['./MetroBar1.wav', './MetroBeat1.wav']
+});
+
+console.log(sound)
+
+// sound.play();

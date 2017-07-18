@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ibraimweb/JazzTrainerProject#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "howler": "^2.0.4",
     "progressbar.js": "^1.0.1",
     "vexflow": "^1.2.83"
   },
