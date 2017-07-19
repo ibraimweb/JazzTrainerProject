@@ -40,7 +40,7 @@ h1 {
     text-shadow: grey 2px 2px 10px;
 }
 
-div#container {
+#container {
     width: 25vh;
 }
 
@@ -53,6 +53,6 @@ div#container {
     color: black;
 }
 
-#temp {
+#bpm {
     width: 40%;
 }

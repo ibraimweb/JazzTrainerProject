@@ -1,7 +1,9 @@
 var keys = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
 var customKeys;
-var temp;
+var bpm;
 var i = 0;
+var timeSignature;
+var metronomeCounter = 1;
 
 function shuffle(array) {
     var currentIndex = array.length,
@@ -40,15 +42,17 @@ var set;
 var isPlaying = false;
 
 function play(keysArr) {
+    metronomeCounter = 1;
     if (isPlaying) return;
     isPlaying = true;
-    temp = $('#temp').val() * 1000;
-    metronomePlay(0, temp);
+    bpm = 60000 / ($('#bpm').val());
+    timeSignature = $('#timeSign').val();
+    metronomePlay(timeSignature, bpm);
     set = setInterval(function() {
         bar.set(0);
         bar.setText(keysArr[i]);
         bar.animate(1.0, {
-            duration: temp
+            duration: bpm * timeSignature
         }, function() {
 
         });
@@ -56,26 +60,39 @@ function play(keysArr) {
         if (i === keysArr.length) {
             i = 0;
         }
-    }, temp);
+    }, bpm * timeSignature);
 }
 
 var metronome;
-var sound = new Howl({
+var metroBar = new Howl({
     src: ['./MetroBar1.wav']
 });
 
-function metronomePlay(timeSign, bpm) {
+var metroBeat = new Howl({
+    src: ['./MetroBeat1.wav']
+});
+
+function metronomePlay(timeSign, bpmRate) {
     metronome = setInterval(() => {
-        sound.play();
-    }, bpm);
+        if (metronomeCounter === +timeSign) {
+            metroBar.play();
+            metronomeCounter = 1;
+        } else {
+            metroBeat.play();
+            metronomeCounter++;
+        }
+
+    }, bpmRate);
 }
 
 function stop() {
     bar.setText(keys[0]);
+    bar.set(0);
     isPlaying = false;
     clearInterval(set);
     clearInterval(metronome);
     i = 0;
+    metronomeCounter = 1;
 }
 
 function pause() {
@@ -85,18 +102,15 @@ function pause() {
 }
 
 $('#start').on('click', function() {
-    console.log('play');
     pause();
     play(keys || customKeys);
 });
 
 $('#reset').on('click', function() {
-    console.log('stop');
     stop();
 });
 
 $('#pause').on('click', function() {
-    console.log('pause');
     pause();
 });
 
