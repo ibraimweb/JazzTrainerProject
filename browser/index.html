@@ -20,7 +20,7 @@
 
             </div>
             <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 custom-center">
-                <h1 id="pageTitle">Jazz Trainer</h1>
+                <h1 id="pageTitle" class="pageTitle">Jazz Trainer</h1>
             </div>
             <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 custom-center">
 
@@ -83,8 +83,14 @@
                 </div>
             </div>
             <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 custom-center">
-                <input id="bpm" type="range" min="40" max="300" value="100" class="form-control" placeholder="bpm">
-                <input id="timeSign" type="text" value="4" class="form-control" placeholder="time signature">
+                <h4 id="bpmText" class="pageTitle">100 bpm</h4>
+                <input id="bpm" type="range" min="40" max="300" value="100" step="5">
+                <select id="timeSign" class="tSign">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4" selected>4</option>
+                </select>
             </div>
         </div>
 

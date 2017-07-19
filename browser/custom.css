@@ -35,7 +35,7 @@ h1 {
     height: 100%;
 }
 
-#pageTitle {
+.pageTitle {
     font-family: "Dancing Script", cursive;
     text-shadow: grey 2px 2px 10px;
 }
@@ -55,4 +55,13 @@ h1 {
 
 #bpm {
     width: 40%;
+    margin-right: 4%;
+}
+
+#bpmText {
+    padding: 10px 10px 10px;
+}
+
+#timeSign {
+    width: 12%;
 }

@@ -1,9 +1,29 @@
 var keys = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
 var customKeys;
-var bpm;
+var bpm = 600;
 var i = 0;
-var timeSignature;
+var isPlaying = false;
+var timeSignature = 4;
 var metronomeCounter = 1;
+var bpmText = $('#bpmText');
+var bpmVal = $('#bpm');
+bpmVal.on('change', () => {
+    bpm = 60000 / bpmVal.val();
+    bpmText.text(bpmVal.val() + ' bpm');
+    if (isPlaying) {
+        pause();
+        play(keys || customKeys);
+    }
+})
+
+var select = $('#timeSign');
+select.on('change', () => {
+    timeSignature = select.val();
+    if (isPlaying) {
+        pause();
+        play(keys || customKeys);
+    }
+})
 
 function shuffle(array) {
     var currentIndex = array.length,
@@ -39,14 +59,12 @@ var bar = new ProgressBar.Circle("#container", {
 });
 
 var set;
-var isPlaying = false;
 
 function play(keysArr) {
     metronomeCounter = 1;
     if (isPlaying) return;
     isPlaying = true;
-    bpm = 60000 / ($('#bpm').val());
-    timeSignature = $('#timeSign').val();
+    //timeSignature = $('#timeSign').val();
     metronomePlay(timeSignature, bpm);
     set = setInterval(function() {
         bar.set(0);
