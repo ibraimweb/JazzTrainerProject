@@ -48,7 +48,8 @@ function shuffle(array) {
 var bar = new ProgressBar.Circle("#container", {
     strokeWidth: 3,
     text: {
-        value: keys[0]
+        className: 'keySymbol',
+        value: keys[0],
     },
     from: { color: '#ffffff', a: 0 },
     to: { color: '#CC6600', a: 1 },
