@@ -1,13 +1,20 @@
 var keys = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
-var customKeys;
+var customKeys = [];
 var bpm = 600;
 var i = 0;
 var isPlaying = false;
 var timeSignature = 4;
 var metronomeCounter = 1;
+
 var bpmText = $('#bpmText');
 var bpmVal = $('#bpm');
-bpmVal.on('change', () => {
+var barText = $('#barText');
+
+$('#bar').on('change', function(e){
+    barText.text(e.target.value + ' bars');
+});
+
+bpmVal.on('change', function(){
     bpm = 60000 / bpmVal.val();
     bpmText.text(bpmVal.val() + ' bpm');
     if (isPlaying) {
@@ -71,7 +78,7 @@ function play(keysArr) {
         bar.set(0);
         bar.setText(keysArr[i]);
         bar.animate(1.0, {
-            duration: bpm * timeSignature
+            duration: bpm * timeSignature 
         }, function() {
 
         });
@@ -122,7 +129,7 @@ function pause() {
 
 $('#start').on('click', function() {
     pause();
-    play(keys || customKeys);
+    play(customKeys.length === 0 ? keys : customKeys);
 });
 
 $('#reset').on('click', function() {
@@ -134,6 +141,15 @@ $('#pause').on('click', function() {
 });
 
 $('#shuffle').on('click', function() {
-    shuffle(keys);
+    shuffle(customKeys || keys);
     console.log(keys)
 });
+
+$('ul.keys').children().on('click', function(){
+    customKeys.push(this.id);
+    notes.push(new VF.StaveNote({ keys: [this.id + "/4"], duration: "q" }));
+    VF.Formatter.FormatAndDraw(context, stave, notes);   
+    console.log(customKeys);
+    console.log(notes);
+})
+

@@ -4,14 +4,14 @@ div.CSSKeyboard {
     width: 15vw;
 }
 
-ul {
+ul.keys {
     /*     border: red 0.5px solid; */
     height: 100%;
     padding: 0;
     position: relative;
 }
 
-li {
+ul.keys > li {
     list-style: none;
     float: left;
     height: 100%;
@@ -28,7 +28,7 @@ li {
 .black {
     position: absolute;
     top: 0;
-    height: 70%;
+    height: 70% !important;
     width: 7%;
     background: #4b4b4b;
     border-radius: 0 0 2px 2px;

@@ -62,18 +62,32 @@ h1 {
     color: black;
 }
 
-#bpm {
-    width: 40%;
-    margin-right: 4%;
-}
-
-#bpmText {
+.slider-text {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    font-size: 3vh;
-    padding: 10px 10px 10px;
+    font-size: 2.7vh;
+    text-align: right;
 }
 
-#timeSign {
-    width: 50px;
+table.sliders {
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
+
+td.slider {
+    padding: 0 10px;
+}
+
+.btn-group > button {
+    background-color: transparent;
+}
+
+.btn-group > button:hover {
+    background-color: gray;
+}
+
+.btn-group > button:focus {
+    background-color: transparent;
+}
+

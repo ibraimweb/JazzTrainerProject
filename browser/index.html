@@ -83,17 +83,27 @@
                 </div>
             </div>
             <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 custom-center">
-                <h4 id="bpmText">100 bpm</h4>
-                <input id="bpm" type="range" min="40" max="300" value="100" step="5">
-                <select id="timeSign" class="tSign">
-                    <option value="3">3/4</option>
-                    <option value="4" selected>4/4</option>
-                    <option value="5">5/4</option>
-                    <option value="6">6/4</option>
-                    <option value="7">7/4</option>
-                    <option value="9">9/4</option>
-                    <option value="11">11/4</option>
-                </select>
+                <table class="sliders">
+                    <tr class="bpm-container">
+                        <td class="slider-text" id="bpmText">100 bpm</td>
+                        <td class="slider"><input id="bpm" type="range" min="40" max="300" value="100" step="5"></td>
+                        <td>
+                            <select class="slider-text" id="timeSign">
+                                <option value="3">3/4</option>
+                                <option value="4" selected>4/4</option>
+                                <option value="5">5/4</option>
+                                <option value="6">6/4</option>
+                                <option value="7">7/4</option>
+                                <option value="9">9/4</option>
+                                <option value="11">11/4</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="bar-container">
+                        <td class="slider-text" id="barText">2 bars</td>
+                        <td class="slider"><input id="bar" type="range" min="1" max="16" value="2" step="1"></td>
+                    </tr>
+                </table>
             </div>
         </div>
 
