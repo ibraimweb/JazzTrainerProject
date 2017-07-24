@@ -141,7 +141,7 @@ $('#pause').on('click', function() {
 });
 
 $('#shuffle').on('click', function() {
-    shuffle(customKeys || keys);
+    shuffle(customKeys.length === 0 ? keys : customKeys);
     console.log(keys)
 });
 
