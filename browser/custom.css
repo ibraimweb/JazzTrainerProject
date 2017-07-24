@@ -70,6 +70,7 @@ h1 {
 #bpmText {
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
+    font-style: italic;
     font-size: 3vh;
     padding: 10px 10px 10px;
 }
