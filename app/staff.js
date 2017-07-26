@@ -16,8 +16,8 @@ stave.addClef("treble").addTimeSignature("4/4");
 // Connect it to the rendering context and draw!
 stave.setContext(context).draw();
 
-var notes = [ new VF.StaveNote({ keys: ["g/3", "c/4", "eb/4"], duration: "q" }).addAccidental(0, new VF.Accidental("b")), 
-              new VF.StaveNote({ keys: ["c/4", "eb/4", "g/4"], duration: "q" }).addAccidental(0, new VF.Accidental("b")) ];
+// var notes = [ new VF.StaveNote({ keys: ["g/3", "c/4", "eb/4"], duration: "q" }).addAccidental(0, new VF.Accidental("b")), 
+//               new VF.StaveNote({ keys: ["c/4", "eb/4", "g/4"], duration: "q" }).addAccidental(0, new VF.Accidental("b")) ];
 
 VF.Formatter.FormatAndDraw(context, stave, notes);
 
