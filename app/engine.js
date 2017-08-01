@@ -9,12 +9,15 @@ var metronomeCounter = 1;
 var bpmText = $('#bpmText');
 var bpmVal = $('#bpm');
 var barText = $('#barText');
+
 $('#chordElements td').on('click', function(e){
     if(customKeys.length === 0){ 
-        alert('Choose the note first')
+        alert('Press the key first')
     }else{
         customKeys[customKeys.length-1] = customKeys[customKeys.length-1] + this.innerHTML;
+        $('#chordDisplay').innerHTML+= customKeys;
         console.log(customKeys);
+        console.log(chordDisplay);
     }
 })
 
@@ -155,9 +158,9 @@ $('#shuffle').on('click', function() {
 
 $('ul.keys').children().on('click', function(){
     customKeys.push(this.innerHTML);
-    notes.push(new VF.StaveNote({ keys: [this.id + "/4"], duration: "q" }));
+    //notes.push(new VF.StaveNote({ keys: [this.id + "/4"], duration: "q" }));
     //VF.Formatter.FormatAndDraw(context, stave, notes);   
     console.log(customKeys);
-    console.log(notes);
+   // console.log(notes);
 })
 

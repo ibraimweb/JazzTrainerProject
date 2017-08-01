@@ -1,0 +1,39 @@
+
+//Chord Constructor
+
+if Key not added
+then chordElements = greyed out
+
+if Key exist in a string
+grey out Keys
+next Key press creates next chord
+
+if Key & qualityElem exist in a string
+grey out Key & qualityElem
+next Key press creates next chord
+
+allow qualities:
+maj min, maj 7, min 7, dim 7, + 7
+
+deny qualities:
+min maj, 7 maj, 7 min, 7 dim, 7 +
+
+if sus quality selected
+grey out rest of the qualities
+
+deny quality and modifiers:
+maj #
+min #
+maj b
+min #
+
+// polychord
+if / added on top of a Key and Quality
+allow another Key & Quality selection
+except sus
+
+
+
+
+
+
