@@ -1,4 +1,4 @@
-var keys = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+var keys = ['C', 'D<sup>&#9837</sup>', 'D', 'E<sup>&#9837</sup>', 'E', 'F', 'G<sup>&#9837</sup>', 'G', 'A<sup>&#9837</sup>', 'A', 'B<sup>&#9837</sup>', 'B'];
 var customKeys = [];
 var bpm = 600;
 var i = 0;
@@ -154,7 +154,7 @@ $('#shuffle').on('click', function() {
 });
 
 $('ul.keys').children().on('click', function(){
-    customKeys.push(this.id);
+    customKeys.push(this.innerHTML);
     notes.push(new VF.StaveNote({ keys: [this.id + "/4"], duration: "q" }));
     //VF.Formatter.FormatAndDraw(context, stave, notes);   
     console.log(customKeys);

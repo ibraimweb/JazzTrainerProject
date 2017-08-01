@@ -12,6 +12,7 @@ ul.keys {
 }
 
 ul.keys > li {
+    font-size: 0;
     list-style: none;
     float: left;
     height: 100%;
