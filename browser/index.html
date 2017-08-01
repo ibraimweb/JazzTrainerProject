@@ -28,10 +28,7 @@
         </div>
         <div id="middle" class="row">
             <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 custom-center">
-                <div class="LeftColumn" id="noteStaff">
-
-
-                </div>
+                
             </div>
             <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 custom-center">
                 <div class="MidColumn">
@@ -74,15 +71,13 @@
                 <!--Checkboxes-->
 
             </div>
-            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 custom-center">
-                <div class="btn-group" role="group">
+            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+                <div class="btn-group" role="group" id="control-buttons">
                     <button id="start" type="button" class="btn btn-default"><span class = "glyphicon glyphicon-play"></span></button>
                     <button id="pause" type="button" class="btn btn-default"><span class = "glyphicon glyphicon-pause"></span></button>
                     <button id="reset" type="button" class="btn btn-default"><span class = "glyphicon glyphicon-remove"></span></button>
                     <button id="shuffle" type="button" class="btn btn-default"><span class = "glyphicon glyphicon-random"></span></button>
                 </div>
-            </div>
-            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 custom-center">
                 <table class="sliders">
                     <tr class="bpm-container">
                         <td class="slider-text" id="bpmText">100 bpm</td>
@@ -105,6 +100,40 @@
                     </tr>
                 </table>
             </div>
+            <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 custom-center">
+                <table class="slider-text" id="chordElements">
+                    <tr>
+                        <td>&#9651</td>
+                        <td>&#9839</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>&#9837</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>/</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>&#9675</td>
+                        <td>/bass</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>+</td>
+                        <td>add</td>
+                        <td>11</td>
+                    </tr>
+                    <tr>
+                        <td>sus</td>
+                        <td></td>
+                        <td>13</td>
+                    </tr>
+                </table>
+            </div>
         </div>
 
     </div>
@@ -112,8 +141,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="../app/howler.min.js"></script>
     <script src="../app/progressbar.min.js"></script>
-    <script src="../app/vexflow-min.js"></script>
-    <script src="../app/staff.js"></script>
     <script src="../app/engine.js"></script>
 
 </body>

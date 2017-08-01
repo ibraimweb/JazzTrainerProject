@@ -9,6 +9,14 @@ var metronomeCounter = 1;
 var bpmText = $('#bpmText');
 var bpmVal = $('#bpm');
 var barText = $('#barText');
+$('#chordElements td').on('click', function(e){
+    if(customKeys.length === 0){ 
+        alert('Choose the note first')
+    }else{
+        customKeys[customKeys.length-1] = customKeys[customKeys.length-1] + this.innerHTML;
+        console.log(customKeys);
+    }
+})
 
 $('#bar').on('change', function(e){
     barText.text(e.target.value + ' bars');
@@ -148,7 +156,7 @@ $('#shuffle').on('click', function() {
 $('ul.keys').children().on('click', function(){
     customKeys.push(this.id);
     notes.push(new VF.StaveNote({ keys: [this.id + "/4"], duration: "q" }));
-    VF.Formatter.FormatAndDraw(context, stave, notes);   
+    //VF.Formatter.FormatAndDraw(context, stave, notes);   
     console.log(customKeys);
     console.log(notes);
 })

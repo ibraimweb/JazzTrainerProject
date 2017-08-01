@@ -18,7 +18,7 @@ stave.setContext(context).draw();
 
 var notes = [];
 
-VF.Formatter.FormatAndDraw(context, stave, notes);
+//VF.Formatter.FormatAndDraw(context, stave, notes);
 
 
 
