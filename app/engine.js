@@ -1,48 +1,56 @@
 var keys = ['C', 'D<sup>&#9837</sup>', 'D', 'E<sup>&#9837</sup>', 'E', 'F', 'G<sup>&#9837</sup>', 'G', 'A<sup>&#9837</sup>', 'A', 'B<sup>&#9837</sup>', 'B'];
 var customKeys = [];
-var bpm = 600;
-var i = 0;
+var metronome;
+var mainInterval;
+
+//interators & counters
+var keys_iterator = 0;
+var bar_counter = 0;
+var metronome_counter = 1;
+
 var isPlaying = false;
+
+var bpm_ms = 600;
 var timeSignature = 4;
-var metronomeCounter = 1;
 
-var bpmText = $('#bpmText');
-var bpmVal = $('#bpm');
-var barText = $('#barText');
-
-$('#chordElements td').on('click', function(e){
-    if(customKeys.length === 0){ 
-        alert('Press the key first')
-    }else{
-        customKeys[customKeys.length-1] = customKeys[customKeys.length-1] + this.innerHTML;
-        $('#chordDisplay').innerHTML+= customKeys;
-        console.log(customKeys);
-        console.log(chordDisplay);
-    }
-})
-
-$('#bar').on('change', function(e){
-    barText.text(e.target.value + ' bars');
+//--------audio file------------
+var metroBar = new Howl({
+    src: ['./MetroBar1.wav']
 });
+var metroBeat = new Howl({
+    src: ['./MetroBeat1.wav']
+});
+//------------------------------
 
-bpmVal.on('change', function(){
-    bpm = 60000 / bpmVal.val();
-    bpmText.text(bpmVal.val() + ' bpm');
-    if (isPlaying) {
-        pause();
-        play(keys || customKeys);
+//jquery DOMElements
+var chordDisplay = $('#chordDisplay');
+var bpmText = $('#bpmText');
+var bpmSlider = $('#bpm');
+var barText = $('#barText');
+var barSlider = $('#bar');
+var timeSignDropDown = $('#timeSign');
+
+var barVal = +barSlider.val();
+
+//------------ProgressBar.js init-------------------------
+var progressBar = new ProgressBar.Circle("#container", {
+    strokeWidth: 3,
+    text: {
+        className: 'keySymbol',
+        value: keys[0],
+    },
+    from: { color: '#ffffff', a: 0 },
+    to: { color: '#CC6600', a: 1 },
+    // Set default step function for all animate calls
+    step: function(state, circle) {
+        circle.path.setAttribute('stroke', state.color);
     }
-})
+});
+//--------------------------------------------------------
 
-var select = $('#timeSign');
-select.on('change', () => {
-    timeSignature = select.val();
-    if (isPlaying) {
-        pause();
-        play(keys || customKeys);
-    }
-})
+chordDisplay.html(keys.join(", "))
 
+//control methods
 function shuffle(array) {
     var currentIndex = array.length,
         temporaryValue, randomIndex;
@@ -63,81 +71,85 @@ function shuffle(array) {
     return array;
 }
 
-var bar = new ProgressBar.Circle("#container", {
-    strokeWidth: 3,
-    text: {
-        className: 'keySymbol',
-        value: keys[0],
-    },
-    from: { color: '#ffffff', a: 0 },
-    to: { color: '#CC6600', a: 1 },
-    // Set default step function for all animate calls
-    step: function(state, circle) {
-        circle.path.setAttribute('stroke', state.color);
-    }
-});
-
-var set;
-
-function play(keysArr) {
-    metronomeCounter = 1;
+function play(keysArr) {  
     if (isPlaying) return;
     isPlaying = true;
-    //timeSignature = $('#timeSign').val();
-    metronomePlay(timeSignature, bpm);
-    set = setInterval(function() {
-        bar.set(0);
-        bar.setText(keysArr[i]);
-        bar.animate(1.0, {
-            duration: bpm * timeSignature 
-        }, function() {
-
-        });
-        i++;
-        if (i === keysArr.length) {
-            i = 0;
+    metronome_counter = 1;
+    metronomePlay(timeSignature, bpm_ms);
+    progressBar.setText(keysArr[0]);
+    //main interval init
+    mainInterval = setInterval(function() {
+        if (keys_iterator > keysArr.length - 1) {
+            keys_iterator = 0;
+        }     
+        progressBar.set(0); 
+        if(bar_counter === barVal){
+            keys_iterator++;
+            progressBar.setText(keysArr[keys_iterator]);   
+            bar_counter = 1;        
+        }else{
+            bar_counter++;
         }
-    }, bpm * timeSignature);
+        progressBar.animate(1.0, {
+            duration: bpm_ms * timeSignature 
+        });
+    }, bpm_ms * timeSignature);
 }
-
-var metronome;
-var metroBar = new Howl({
-    src: ['./MetroBar1.wav']
-});
-
-var metroBeat = new Howl({
-    src: ['./MetroBeat1.wav']
-});
 
 function metronomePlay(timeSign, bpmRate) {
     metronome = setInterval(() => {
-        if (metronomeCounter === +timeSign) {
+        if (metronome_counter === +timeSign) {
             metroBar.play();
-            metronomeCounter = 1;
+            metronome_counter = 1;
         } else {
             metroBeat.play();
-            metronomeCounter++;
+            metronome_counter++;
         }
 
     }, bpmRate);
 }
 
 function stop() {
-    bar.setText(keys[0]);
-    bar.set(0);
+    progressBar.setText(customKeys[0] || keys[0]);
+    progressBar.set(0);
     isPlaying = false;
-    clearInterval(set);
+    clearInterval(mainInterval);
     clearInterval(metronome);
     i = 0;
-    metronomeCounter = 1;
+    metronome_counter = 1;
+    bar_counter = 0;
 }
 
 function pause() {
     isPlaying = false;
-    clearInterval(set);
+    clearInterval(mainInterval);
     clearInterval(metronome);
 }
 
+//on change events
+barSlider.on('change', function(e){
+    barText.text(e.target.value + ' bars');
+    barVal = +e.target.value;
+});
+
+bpmSlider.on('change', function(){
+    bpm_ms = 60000 / bpmSlider.val();
+    bpmText.text(bpmSlider.val() + ' bpm');
+    if (isPlaying) {
+        pause();
+        play(keys || customKeys);
+    }
+})
+
+timeSignDropDown.on('change', () => {
+    timeSignature = timeSignDropDown.val();
+    if (isPlaying) {
+        pause();
+        play(keys || customKeys);
+    }
+})
+
+//on click events
 $('#start').on('click', function() {
     pause();
     play(customKeys.length === 0 ? keys : customKeys);
@@ -153,14 +165,21 @@ $('#pause').on('click', function() {
 
 $('#shuffle').on('click', function() {
     shuffle(customKeys.length === 0 ? keys : customKeys);
-    console.log(keys)
+    chordDisplay.html(customKeys.join(", "));
 });
 
 $('ul.keys').children().on('click', function(){
     customKeys.push(this.innerHTML);
-    //notes.push(new VF.StaveNote({ keys: [this.id + "/4"], duration: "q" }));
-    //VF.Formatter.FormatAndDraw(context, stave, notes);   
+    chordDisplay.html(customKeys.join(", ")); 
     console.log(customKeys);
-   // console.log(notes);
 })
 
+$('#chordElements td').on('click', function(e){
+    if(customKeys.length === 0){ 
+        alert('Press the key first')
+    }else{
+        customKeys[customKeys.length-1] = customKeys[customKeys.length-1] + this.innerHTML;
+        chordDisplay.html(customKeys.join(", "));
+        console.log(customKeys);
+    }
+})

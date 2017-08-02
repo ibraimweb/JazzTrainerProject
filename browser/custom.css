@@ -91,8 +91,8 @@ td.slider {
     background-color: transparent;
 }
 
-#control-buttons {
-    width: 100%;
+#control {
+    height: 100%;
 }
 
 #chordElements {
@@ -118,6 +118,13 @@ td.slider {
 }
 
 #chordDisplay {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 4vh;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-y: auto;
+    padding: 10px;
     width: 70%;
     height: 80%;
     border: 1px white solid;
